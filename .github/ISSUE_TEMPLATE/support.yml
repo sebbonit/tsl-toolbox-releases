@@ -1,0 +1,17 @@
+name: Question or support
+description: Ask about installing or using a release
+title: "[Support]: "
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask a question about downloading or installing a release. For bugs, use the bug report template instead.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true

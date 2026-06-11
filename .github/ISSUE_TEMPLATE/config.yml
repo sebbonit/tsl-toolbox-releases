@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Download latest release
+    url: https://github.com/sebbonit/tsl-toolbox-releases/releases/latest
+    about: Get the newest Chrome or Firefox build
+  - name: All releases
+    url: https://github.com/sebbonit/tsl-toolbox-releases/releases
+    about: Browse previous versions

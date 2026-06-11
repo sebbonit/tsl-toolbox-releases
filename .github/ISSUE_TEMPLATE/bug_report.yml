@@ -1,0 +1,46 @@
+name: Bug or install issue
+description: Report a problem with a release or installation
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. This repo is for **releases and support only** — pull requests are not accepted.
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Firefox
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      description: e.g. 0.7.4 (shown in the extension footer)
+      placeholder: "0.7.4"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Steps to reproduce and what you expected instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra context
+      description: Screenshots, console errors, OS version, etc.
+    validations:
+      required: false

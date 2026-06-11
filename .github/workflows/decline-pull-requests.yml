@@ -1,0 +1,39 @@
+name: Decline pull requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close pull request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const reason = [
+              'Thanks for your interest in TSL Toolbox.',
+              '',
+              'This repository is for **releases and issues only**. Pull requests are not accepted here because the source code is private.',
+              '',
+              '- Download builds: https://github.com/sebbonit/tsl-toolbox-releases/releases',
+              '- Report bugs: https://github.com/sebbonit/tsl-toolbox-releases/issues/new/choose',
+            ].join('\n');
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              state: 'closed',
+            });
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: reason,
+            });
